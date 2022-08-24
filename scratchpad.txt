@@ -1,0 +1,313 @@
+B3BB5AF078(rsp+20)   - 00007FF710B52C57     - (pointer)rs2client.exe+5C2C57
+B3BB5AF060(rsp+8)    - 000001E68082E540     - (pointer)1E68082E540
+B3BB5AF0A0(rsp+48)   - 000001E64F4000D0     - (pointer)1E64F4000D0
+
+
+
+
+rcx + 278 (1F0620B8FA8)
+
+AB43EFF218(rsp+0)    - 000000AB43EFF2C9     - (pointer)AB43EFF2C9 
+80      42      e2      9b      83      1
+
+12      6f      73      74      50      72      6f      63      65      73      73      44      6f      77      6e      73      61      6d      70      6c      65      52      54      31 first emote
+12      6f      73      74      50      72      6f      63      65      73      73      44      6f      77      6e      73      61      6d      70      6c      65      52      54      30 second emote
+12      6f      73      74      50      72      6f      63      65      73      73      44      6f      77      6e      73      61      6d      70      6c      65      52      54      31
+12      6f      73      74      50      72      6f      63      65      73      73      44      6f      77      6e      73      61      6d      70      6c      65      52      54      31
+12      6f      73      74      50      72      6f      63      65      73      73      44      6f      77      6e      73      61      6d      70      6c      65      52      54      31
+12      6f      73      74      50      72      6f      63      65      73      73      44      6f      77      6e      73      61      6d      70      6c      65      52      54      30
+
+Packet
+        OPCODE: 59
+        BUFFER: Ç▄Ωæ;☻  // Walk packet before buffer ran through ntohs
+
+
+80      dc      ea      91      3b      2
+0xc3 0x87 0xe2 0x96 0x84 0xce 0xa9 0xc3 0xa6 0x3b 0xe2 0x98 0xbb
+
+                         *******************************************************
+                         *                      FUNCTION                       *
+                         *******************************************************
+                         char * __fastcall build_packet(Packet * packet, c
+           char *          RAX:8        <RETURN>
+           Packet *        RCX:8        packet
+           char            DL:1         opcode
+           Jagex::Isaac    R8:8         isaac
+           undefined8      Stack[0x10]  local_res10                        XREF[2]:   00082ec5(W), 
+                                                                                      00082f00(R)  
+           undefined8      Stack[0x8]:8 local_res8                         XREF[2]:   00082ec0(W), 
+                                                                                      00082ef8(R)  
+           int64_t         HASH:5f6f8d  lVar1
+                         Jagex::build_packet                       XREF[7]:   new_packet_0007fd20:0007fdda
+                                                                               new_packet_0007fd20:0007fe99
+                                                                               FUN_000d5610:000d56ca(c), 
+                                                                               FUN_000d5610:000d5789(c), 
+                                                                               FUN_000d5ee0:000d5f9a(c), 
+                                                                               FUN_000d5ee0:000d6059(c), 
+                                                                               00c0e030(*)  
+      00082ec0 48 89 5c      MOV       qword ptr [RSP + local_res8],RBX
+               24 08
+      00082ec5 48 89 74      MOV       qword ptr [RSP + local_res10],RSI
+               24 10
+      00082eca 57            PUSH      RDI
+      00082ecb 48 83 ec      SUB       RSP,0x20
+               20
+      00082ecf 41 8b 00      MOV       EAX,dword ptr [isaac->left]
+      00082ed2 49 8b d8      MOV       RBX,isaac
+      00082ed5 0f b6 f2      MOVZX     ESI,opcode
+      00082ed8 48 8b f9      MOV       RDI,packet
+      00082edb 85 c0         TEST      EAX,EAX
+      00082edd 75 0d         JNZ       LAB_00082eec
+      00082edf 48 8b cb      MOV       packet,RBX
+      00082ee2 e8 69 8a      CALL      Jagex::Isaac::Generate                     void Generate(Jagex::Isaac *
+               4f 00
+      00082ee7 b8 00 01      MOV       EAX,0x100
+               00 00
+                         LAB_00082eec                              XREF[1]:   00082edd(j)  
+      00082eec ff c8         DEC       EAX
+      00082eee 89 03         MOV       dword ptr [RBX],EAX
+      00082ef0 48 8b 4f      MOV       packet,qword ptr [RDI + 0x18]
+               18
+      00082ef4 8b 54 83      MOV       opcode,dword ptr [RBX + RAX*0x4 + 0x4]
+               04
+      00082ef8 48 8b 5c      MOV       RBX,qword ptr [RSP + local_res8]
+               24 30
+      00082efd 40 02 d6      ADD       opcode,SIL
+      00082f00 48 8b 74      MOV       RSI,qword ptr [RSP + local_res10]
+               24 38
+      00082f05 48 8d 41      LEA       RAX,[RCX + packet+0x1]
+               01
+      00082f09 48 89 47      MOV       qword ptr [RDI + 0x18],RAX
+               18
+      00082f0d 48 8b 47      MOV       RAX,qword ptr [RDI + 0x10]
+               10
+      00082f11 88 14 01      MOV       byte ptr [packet->a + RAX*0x1],opcode
+      00082f14 48 83 c4      ADD       RSP,0x20
+               20
+      00082f18 5f            POP       RDI
+      00082f19 c3            RET
+
+
+                         *******************************************************
+                         *                      FUNCTION                       *
+                         *******************************************************
+                         void __fastcall Generate(Jagex::Isaac * this)
+           void            <VOID>       <RETURN>
+           Jagex::Isaac    RCX:8        this
+           undefined8      Stack[0x8]:8 local_res8                         XREF[2]:   0057b950(W), 
+                                                                                      0057ba36(R)  
+                         Jagex::Isaac::Generate                    XREF[16]:  build_packet:00082ee2(c), 
+                                                                               FUN_000a80a0:000a80dd(c), 
+                                                                               FUN_000a80a0:000a80ff(c), 
+                                                                               FUN_000a80a0:000a8121(c), 
+                                                                               FUN_000a80a0:000a8143(c), 
+                                                                               FUN_000a8600:000a869c(c), 
+                                                                               FUN_000aa960:000aaaed(c), 
+                                                                               000ad08e(c), 
+                                                                               FUN_000cf350:000cf39c(c), 
+                                                                               FUN_000d2c90:000d2d5c(c), 
+                                                                               FUN_000d2c90:000d2de4(c), 
+                                                                               FUN_000d2c90:000d2e22(c), 
+                                                                               FUN_00149690:001496ee(c), 
+                                                                               FUN_00187310:001874b4(c), 
+                                                                               FUN_0057ab00:0057b92b(c), 
+                                                                               00c55010(*)  
+      0057b950 48 89 5c      MOV       qword ptr [RSP + local_res8],RBX
+               24 08
+      0057b955 ff 81 0c      INC       dword ptr [RCX + this->cc]
+               08 00 00
+      0057b95b 4c 8d 99      LEA       R11,[RCX + this->mm[0]]
+               04 04 00 
+               00
+      0057b962 8b 81 0c      MOV       EAX,dword ptr [RCX + this->cc]
+               08 00 00
+      0057b968 4c 8b c1      MOV       R8,this
+      0057b96b 01 81 08      ADD       dword ptr [RCX + this->bb],EAX
+               08 00 00
+      0057b971 45 33 d2      XOR       R10D,R10D
+      0057b974 0f 1f 40      NOP       dword ptr [RAX]
+               00
+      0057b978 0f 1f 84      NOP       dword ptr [RAX + RAX*0x1]
+               00 00 00 
+               00 00
+                         LAB_0057b980                              XREF[1]:   0057ba30(j)  
+      0057b980 45 8b 88      MOV       R9D,dword ptr [R8 + 0x804]
+               04 08 00 
+               00
+      0057b987 41 8b d2      MOV       EDX,R10D
+      0057b98a 41 8b 1b      MOV       EBX,dword ptr [R11]
+      0057b98d 83 e2 01      AND       EDX,0x1
+      0057b990 41 8b c9      MOV       this,R9D
+      0057b993 41 8b c1      MOV       EAX,R9D
+      0057b996 41 f6 c2      TEST      R10B,0x2
+               02
+      0057b99a 75 10         JNZ       LAB_0057b9ac
+      0057b99c c1 e9 06      SHR       this,0x6
+      0057b99f c1 e0 0d      SHL       EAX,13
+      0057b9a2 85 d2         TEST      EDX,EDX
+      0057b9a4 0f 45 c1      CMOVNZ    EAX,this
+      0057b9a7 41 33 c1      XOR       EAX,R9D
+      0057b9aa eb 13         JMP       LAB_0057b9bf
+                         LAB_0057b9ac                              XREF[1]:   0057b99a(j)  
+      0057b9ac 85 d2         TEST      EDX,EDX
+      0057b9ae 75 0a         JNZ       LAB_0057b9ba
+      0057b9b0 42 8d 04      LEA       EAX,[R9*0x4]
+               8d 00 00 
+               00 00
+      0057b9b8 eb 03         JMP       LAB_0057b9bd
+                         LAB_0057b9ba                              XREF[1]:   0057b9ae(j)  
+      0057b9ba c1 e8 10      SHR       EAX,0x10
+                         LAB_0057b9bd                              XREF[1]:   0057b9b8(j)  
+      0057b9bd 33 c1         XOR       EAX,this
+                         LAB_0057b9bf                              XREF[1]:   0057b9aa(j)  
+      0057b9bf 41 89 80      MOV       dword ptr [R8 + 0x804],EAX
+               04 08 00 
+               00
+      0057b9c6 41 8d 4a      LEA       this,[R10 + -0x80]
+               80
+      0057b9ca 0f b6 d1      MOVZX     EDX,this
+      0057b9cd 41 ff c2      INC       R10D
+      0057b9d0 41 8b 94      MOV       EDX,dword ptr [R8 + RDX*0x4 + 0x404]
+               90 04 04 
+               00 00
+      0057b9d8 03 d0         ADD       EDX,EAX
+      0057b9da 8b c3         MOV       EAX,EBX
+      0057b9dc 48 c1 e8      SHR       RAX,0x2
+               02
+      0057b9e0 41 89 90      MOV       dword ptr [R8 + 0x804],EDX
+               04 08 00 
+               00
+      0057b9e7 0f b6 c0      MOVZX     EAX,AL
+      0057b9ea 41 8b 8c      MOV       this,dword ptr [R8 + RAX*0x4 + 0x404]
+               80 04 04 
+               00 00
+      0057b9f2 03 ca         ADD       this,EDX
+      0057b9f4 41 03 88      ADD       this,dword ptr [R8 + 0x808]
+               08 08 00 
+               00
+      0057b9fb 41 89 0b      MOV       dword ptr [R11],this
+      0057b9fe c1 f9 08      SAR       this,0x8
+      0057ba01 81 e1 fc      AND       this,0x3fc
+               03 00 00
+      0057ba07 8b c1         MOV       EAX,this
+      0057ba09 48 c1 e8      SHR       RAX,0x2
+               02
+      0057ba0d 41 8b 8c      MOV       this,dword ptr [R8 + RAX*0x4 + 0x404]
+               80 04 04 
+               00 00
+      0057ba15 03 cb         ADD       this,EBX
+      0057ba17 41 89 88      MOV       dword ptr [R8 + 0x808],this
+               08 08 00 
+               00
+      0057ba1e 41 89 8b      MOV       dword ptr [R11 + -0x400],this
+               00 fc ff 
+               ff
+      0057ba25 49 83 c3      ADD       R11,0x4
+               04
+      0057ba29 41 81 fa      CMP       R10D,256
+               00 01 00 
+               00
+      0057ba30 0f 82 4a      JC        LAB_0057b980ign
+               ff ff ff
+      0057ba36 48 8b 5c      MOV       RBX,qword ptr [RSP + local_res8]
+               24 08
+      0057ba3b c3            RET
+
+
+48 89 5c 24 10 48 89 6c 24 18 56 41 56 41 57 48 83 ec 20 48 8b f1 49 8b e9 48 8d 0d a0 da b7 00 4d 8b f8 4c 8b f2 e8 8d 2e 54 00 85 c0 74 07 8b c8 e8 52 2a 54 00 48 89 7c 24 40 e8 90 09 00 00 8b 58 18 e8 88 09 00 00 3b 58 1c 0f 85 b3 00 00 00 48 8d 0d 68 da b7 00 e8 bb 2e 54 00 85 c0 74 07 8b c8 e8 20 2a 54 00 ba 08 00 00 00 8d 4a 58 e8 fb 78 50 00 48 8b f8 48 85 c0 75 10 33 db 48 89 1e 8b fb 48 89 5e 08 e9 2d 01 00 00 4d 8b 36 48 8d 58 20 45 8b 07 48 8b cb 48 8b 6d 00 41 8b 16 e8 7a 1a fe ff 4c 89 73 38 48 85 ed 74 12 41 0f b6 16 48 8d 4b 08 4c 8b c5 e8 e1 30 00 00 eb 13 48 8b 4b 20 41 0f b6 06 48 8b 53 18 88 04 0a 48 ff 43 20 c7 47 08 01 00 00 00 48 8d 05 7e 06 82 00 c7 47 0c 01 00 00 00 48 89 07 48 c7 47 10 01 00 00 00 48 89 5f 18 48 89 3e 48 89 5e 08 e9 b6 00 00 00 e8 c7 08 00 00 4c 63 48 18 44 3b 48 1c 7d 20 48 8b 48 08 4e 63 04 89 48 8b 48 10 4b 8d 1c 40 48 c1 e3 05 48 03 18 46 89 0c 81 ff 40 18 eb 02 33 db 48 8d 0d 84 d9 b7 00 e8 d7 2d 54 00 85 c0 74 07 8b c8 e8 3c 29 54 00 4d 8b 36 48 8d 7b 20 45 8b 07 48 8b cf 48 8b 6d 00 41 8b 16 e8 bb 19 fe ff 4c 89 77 38 48 85 ed 74 12 41 0f b6 16 48 8d 4f 08 4c 8b c5 e8 22 30 00 00 eb 13 48 8b 4f 20 41 0f b6 06 48 8b 57 18 88 04 0a 48 ff 47 20 c7 43 08 01 00 00 00 48 8d 05 d7 05 82 00 c7 43 0c 01 00 00 00 48 89 03 48 89 5b 10 48 89 7b 18 48 89 1e 48 89 7e 08 48 8b 7c 24 40 48 8b c6 48 8b 5c 24 48 48 8b 6c 24 50 48 83 c4 20 41 5f 41 5e 5e c3
+
+Carter — Today at 2:02 AM
+there's not rlly much to know about isaac other than
+it can basically only go one of two ways
+you either have vernam or caesar
+https://rosettacode.org/wiki/The_ISAAC_cipher
+The ISAAC cipher
+it's dead simple but can see it being a bit ?? if you've never looked at anything like this before.
+I like this site because I can go look at what this implementation would look like in a language I'm familiar with.
+Java implementation can get a bit weird, since Java doesn't really offer the necessary data types out of the box.
+
+Carter — Today at 3:20 AM
+char* buildJagexPacket(Packet* packet, char opcode, Isaac* isaac)
+{
+    if (isaac->bytesRemaining == 0) {
+        isaacGenerate(isaac);
+        isaac->bytesRemaining = 0x100;
+    }
+    isaac->bytesRemaining -= 1;
+    packet->bytesWritten = packet->bytesWritten + 1;
+    //                                                                                     + or - here idfk forgot will check later
+    packet->buffer[packet->bytesWritten] = (char)isaac->cipherResult[isaac->bytesRemaining + 1] + opcode;
+    return packet->buffer;
+}
+
+[3:20 AM]
+If that tells you anything about whether or not they're similar.
+[3:21 AM]
+fairly sure the comment there is silly and it's just  +.
+[3:21 AM]
+Given that decrementing from bytesRemaining happens just 2 lines up
+[3:22 AM]
+Jagex::Isaac::Generate
+{ 0x48, 0x89, 0x5c, 0x24, 0x08, 0xff, 0x81, 0x0c, 0x08, 0x00, 0x00, 0x4c, 0x8d, 0x99, 0x04, 0x04, 0x00, 0x00, 0x8b, 0x81, 0x0c, 0x08, 0x00, 0x00, 0x4c, 0x8b, 0xc1, 0x01, 0x81, 0x08, 0x08, 0x00, 0x00, 0x45, 0x33, 0xd2, 0x0f, 0x1f, 0x40, 0x00, 0x0f, 0x1f, 0x84, 0x00, 0x00, 0x00, 0x00, 0x00, 0x45, 0x8b, 0x88, 0x04, 0x08, 0x00, 0x00, 0x41, 0x8b, 0xd2, 0x41, 0x8b, 0x1b, 0x83, 0xe2, 0x01, 0x41, 0x8b, 0xc9, 0x41, 0x8b, 0xc1, 0x41, 0xf6, 0xc2, 0x02, 0x75, 0x10, 0xc1, 0xe9, 0x06, 0xc1, 0xe0, 0x0d, 0x85, 0xd2, 0x0f, 0x45, 0xc1, 0x41, 0x33, 0xc1, 0xeb, 0x13, 0x85, 0xd2, 0x75, 0x0a, 0x42, 0x8d, 0x04, 0x8d, 0x00, 0x00, 0x00, 0x00, 0xeb, 0x03, 0xc1, 0xe8, 0x10, 0x33, 0xc1, 0x41, 0x89, 0x80, 0x04, 0x08, 0x00, 0x00, 0x41, 0x8d, 0x4a, 0x80, 0x0f, 0xb6, 0xd1, 0x41, 0xff, 0xc2, 0x41, 0x8b, 0x94, 0x90, 0x04, 0x04, 0x00, 0x00, 0x03, 0xd0, 0x8b, 0xc3, 0x48, 0xc1, 0xe8, 0x02, 0x41, 0x89, 0x90, 0x04, 0x08, 0x00, 0x00, 0x0f, 0xb6, 0xc0, 0x41, 0x8b, 0x8c, 0x80, 0x04, 0x04, 0x00, 0x00, 0x03, 0xca, 0x41, 0x03, 0x88, 0x08, 0x08, 0x00, 0x00, 0x41, 0x89, 0x0b, 0xc1, 0xf9, 0x08, 0x81, 0xe1, 0xfc, 0x03, 0x00, 0x00, 0x8b, 0xc1, 0x48, 0xc1, 0xe8, 0x02, 0x41, 0x8b, 0x8c, 0x80, 0x04, 0x04, 0x00, 0x00, 0x03, 0xcb, 0x41, 0x89, 0x88, 0x08, 0x08, 0x00, 0x00, 0x41, 0x89, 0x8b, 0x00, 0xfc, 0xff, 0xff, 0x49, 0x83, 0xc3, 0x04, 0x41, 0x81, 0xfa, 0x00, 0x01, 0x00, 0x00, 0x0f, 0x82, 0x4a, 0xff, 0xff, 0xff, 0x48, 0x8b, 0x5c, 0x24, 0x08, 0xc3 }
+[3:22 AM]
+Jagex::new_packet
+{ 0x48, 0x89, 0x5c, 0x24, 0x08, 0xff, 0x81, 0x0c, 0x08, 0x00, 0x00, 0x4c, 0x8d, 0x99, 0x04, 0x04, 0x00, 0x00, 0x8b, 0x81, 0x0c, 0x08, 0x00, 0x00, 0x4c, 0x8b, 0xc1, 0x01, 0x81, 0x08, 0x08, 0x00, 0x00, 0x45, 0x33, 0xd2, 0x0f, 0x1f, 0x40, 0x00, 0x0f, 0x1f, 0x84, 0x00, 0x00, 0x00, 0x00, 0x00, 0x45, 0x8b, 0x88, 0x04, 0x08, 0x00, 0x00, 0x41, 0x8b, 0xd2, 0x41, 0x8b, 0x1b, 0x83, 0xe2, 0x01, 0x41, 0x8b, 0xc9, 0x41, 0x8b, 0xc1, 0x41, 0xf6, 0xc2, 0x02, 0x75, 0x10, 0xc1, 0xe9, 0x06, 0xc1, 0xe0, 0x0d, 0x85, 0xd2, 0x0f, 0x45, 0xc1, 0x41, 0x33, 0xc1, 0xeb, 0x13, 0x85, 0xd2, 0x75, 0x0a, 0x42, 0x8d, 0x04, 0x8d, 0x00, 0x00, 0x00, 0x00, 0xeb, 0x03, 0xc1, 0xe8, 0x10, 0x33, 0xc1, 0x41, 0x89, 0x80, 0x04, 0x08, 0x00, 0x00, 0x41, 0x8d, 0x4a, 0x80, 0x0f, 0xb6, 0xd1, 0x41, 0xff, 0xc2, 0x41, 0x8b, 0x94, 0x90, 0x04, 0x04, 0x00, 0x00, 0x03, 0xd0, 0x8b, 0xc3, 0x48, 0xc1, 0xe8, 0x02, 0x41, 0x89, 0x90, 0x04, 0x08, 0x00, 0x00, 0x0f, 0xb6, 0xc0, 0x41, 0x8b, 0x8c, 0x80, 0x04, 0x04, 0x00, 0x00, 0x03, 0xca, 0x41, 0x03, 0x88, 0x08, 0x08, 0x00, 0x00, 0x41, 0x89, 0x0b, 0xc1, 0xf9, 0x08, 0x81, 0xe1, 0xfc, 0x03, 0x00, 0x00, 0x8b, 0xc1, 0x48, 0xc1, 0xe8, 0x02, 0x41, 0x8b, 0x8c, 0x80, 0x04, 0x04, 0x00, 0x00, 0x03, 0xcb, 0x41, 0x89, 0x88, 0x08, 0x08, 0x00, 0x00, 0x41, 0x89, 0x8b, 0x00, 0xfc, 0xff, 0xff, 0x49, 0x83, 0xc3, 0x04, 0x41, 0x81, 0xfa, 0x00, 0x01, 0x00, 0x00, 0x0f, 0x82, 0x4a, 0xff, 0xff, 0xff, 0x48, 0x8b, 0x5c, 0x24, 0x08, 0xc3 }
+[3:22 AM]
+Jagex::build_packet
+{ 0x48, 0x89, 0x5c, 0x24, 0x08, 0x48, 0x89, 0x74, 0x24, 0x10, 0x57, 0x48, 0x83, 0xec, 0x20, 0x41, 0x8b, 0x00, 0x49, 0x8b, 0xd8, 0x0f, 0xb6, 0xf2, 0x48, 0x8b, 0xf9, 0x85, 0xc0, 0x75, 0x0d, 0x48, 0x8b, 0xcb, 0xe8, 0x69, 0x8a, 0x4f, 0x00, 0xb8, 0x00, 0x01, 0x00, 0x00, 0xff, 0xc8, 0x89, 0x03, 0x48, 0x8b, 0x4f, 0x18, 0x8b, 0x54, 0x83, 0x04, 0x48, 0x8b, 0x5c, 0x24, 0x30, 0x40, 0x02, 0xd6, 0x48, 0x8b, 0x74, 0x24, 0x38, 0x48, 0x8d, 0x41, 0x01, 0x48, 0x89, 0x47, 0x18, 0x48, 0x8b, 0x47, 0x10, 0x88, 0x14, 0x01, 0x48, 0x83, 0xc4, 0x20, 0x5f, 0xc3 }
+[3:23 AM]
+Couldn't be asked to go and introduce wild cards and figure out an optimal signature. By the time the update was happening I'd already lost interest
+[3:23 AM]
+probably will be another week or two before I bother again
+[3:23 AM]
+I come back every month or so, see if I can make the game do a thing, if I can I get my dopamine hit and leave
+[3:25 AM]
+It wouldn't be hard to write an algorithm to insert wildcards at different positions. Every permutation might be a bit much, but doing it in a fashion where you mark any false-positives would definitely be fine.
+[3:25 AM]
+a bit retarded, but fine.
+[3:25 AM]
+this shit's just fun for me, learning new things. Don't really take it too seriously. 
+
+
+Carter — Today at 4:23 AM
+Ah I still had packet log open
+8e80c58d339b5e is walk packet
+c58 being x, d33 being y
+(top end of ge)
+additional samples, all of these have ciphered opcodes.
+
+
+fc80c59d335955
+ff80c59d3391411
+4b80c58d33249e
+8e80c58d339b5e
+
+Not sure what the 80 is after the opcode. Didn't look into it.
+
+
+Carter — 08/21/2022
+like why am i telling the server this when i login
+[8:10 AM]
+Packet
+    OPCODE:    85
+    BUFFER:    Open the tool belt to view the tools you have stored there.<br><br>Items in the tool belt do not take up an inventory slot or contribute to your weight.<br>Tools which can be added to the tool belt have an 'Add to tool belt' option in the inventory, though some tools are added automatically.
+    BFRLEN:    0
+    Misc    -13536    -21919    603    0    260
+[8:10 AM]
+????
+
+
+// ^ still not sure about this. It'd be odd if this were to be the server communicating this information with me, given that this seems like something that would stem from localization files that your client downloads locally. 
+// It is entirely possible (and likely, the more I look at the packets I've logged) that they use the same function that builds packet buffers to also unpack received packets. 
+
+Trampolining build_packet has given the same results in both osrs steam and rs3 (non steam).
+
+It's also entirely possible that there exists a virtual function responsible for doing packet unpacking and a separate virtual function for packet packing. I don't care enough to look currently. 
+
+
+// 59 80 c60 d30 | walk packet test
+
+59 being unobfuscated opcode, 80 being ???, 0xC60 being X pos, 0xD30 being Y pos.
+
+
+
