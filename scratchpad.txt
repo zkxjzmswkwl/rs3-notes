@@ -264,7 +264,7 @@ I come back every month or so, see if I can make the game do a thing, if I can I
 [3:25 AM]
 It wouldn't be hard to write an algorithm to insert wildcards at different positions. Every permutation might be a bit much, but doing it in a fashion where you mark any false-positives would definitely be fine.
 [3:25 AM]
-a bit retarded, but fine.
+a bit silly, but fine.
 [3:25 AM]
 this shit's just fun for me, learning new things. Don't really take it too seriously. 
 
